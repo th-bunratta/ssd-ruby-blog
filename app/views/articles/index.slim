@@ -1,0 +1,22 @@
+h1 This is an articles list
+div = link_to 'New Article', new_article_path
+table border='1'
+  thead
+    tr
+      th ID
+      th title
+      th body
+      th createdAt
+      th updatedAt
+      th Action
+  tbody
+    - @articles.each do |a|
+      tr
+        td = a.id
+        td = link_to a.title, a
+        td = a.body
+        td = a.created_at.to_date
+        td = a.updated_at.to_date
+        td
+          div = link_to 'Edit', edit_article_path(a)
+          div = link_to 'Delete', article_path(a), method: :delete
